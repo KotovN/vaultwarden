@@ -62,6 +62,10 @@ impl Cors {
     // If a match exists, return it. Otherwise, return None.
     fn get_allowed_origin(headers: &HeaderMap) -> Option<String> {
         let origin = Cors::get_header(headers, "Origin");
+        if !CONFIG.enable_cors() {
+            return Some(origin);
+        }
+
         let domain_origin = CONFIG.domain_origin();
         let safari_extension_origin = "file://";
         if origin == domain_origin || origin == safari_extension_origin {

@@ -379,6 +379,8 @@ make_config! {
         domain_origin:          String, false,  auto,   |c| extract_url_origin(&c.domain);
         /// Domain path |> Domain URL path (in https://example.com:8443/path, /path is the path)
         domain_path:            String, false,  auto,   |c| extract_url_path(&c.domain);
+        /// Enable Cors
+        enable_cors:            bool,   false,  def,    true;
         /// Enable web vault
         web_vault_enabled:      bool,   false,  def,    true;
 
